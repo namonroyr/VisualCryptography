@@ -31,7 +31,7 @@ def aplicar_marca_agua(base_img, watermark_img, alpha=alpha):
     base_array = np.array(base, dtype=float) / 255.0
     watermark_array = np.array(watermark, dtype=float) / 255.0
     # Aplicar la marca de agua (la imagen principal será más oscura y la marca de agua más clara)
-    combined_array = base_array * (1-beta) + watermark_array * (1-alpha)
+    combined_array = base_array * (beta) + watermark_array * (1-alpha)
     combined_array = np.clip(combined_array, 0, 1)  # Asegurar que los valores estén en el rango [0, 1]
     combined_image = Image.fromarray(np.uint8(combined_array * 255))
     return combined_image
