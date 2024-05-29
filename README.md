@@ -8,7 +8,7 @@ Esta es una aplicación de encriptación de imágenes y marcas de agua para el c
 - Diego Morales Granados
 
 <div align="center">
-    <img src="secretsafe_logo.png" alt="Texto alternativo" width="500" height="500"/>
+    <img src="PixelSafe_logo.png" alt="Texto alternativo" width="500" height="500"/>
 </div>
 
 ## Instalación
