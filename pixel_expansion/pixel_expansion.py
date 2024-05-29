@@ -86,14 +86,6 @@ def decrypt(img_share_1, img_share_2):
     '''
     Black -> 0
     White -> 1
-
-    White + White -> White ( 1 + 1 -> 1)
-    White + Black -> Black ( 1 + 0 -> 0)
-    Black + White -> Black ( 0 + 1 -> 0)
-    Black + Black -> Black ( 0 + 0 -> 0)
-
-    Best operator to use for this is - bitwise and
-
     '''
     overlap_matrix = img_share_1 & img_share_2
     (row, column) = img_share_1.shape
