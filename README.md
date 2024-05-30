@@ -13,29 +13,31 @@ Esta es una aplicación de encriptación de imágenes y marcas de agua para el c
 
 ## Instalación
 Para instalar PixelSafe:
-### 1. Descargar repositorio
-Puede hacer esto descargando el archivo `.zip` de este repositorio
-### 2. Crear ambiente virtual
-Esto se hace para que las dependencias usadas por PixelSafe puedan funcionar correctamente y de manera segura. Primero nos movemos a el folder de gui:
+
+### 1. Clone el repositorio
 ```
-  cd path/to/folder/gui
-  ```
-- Crear ambiente virtual
-  ```
-  python -m venv myenv
-  ```
-- Activar ambiente virtual
-  ```
-  source myenv/bin/activate
-  ```
-### 3. Instalar dependencias
-En la carpeta del repositorio esta el archivo `requirements.txt` con la lista de todas las dependencias que usa PixelSafe. Estas pueden ser instaladas de esta manera:
-```
-pip install -r ../requirements.txt
+git clone https://github.com/namonroyr/Visual_Cryptography.git
 ```
 
-### 4. Ejecutar PixelSafe
-Hay que asegurarse de estar en la carpeta `gui` del proyecto. Luego, PixelSafe puede ser ejecutada de esta forma:
+### 2. Crear ambiente virtual
+```
+python -m venv cryptool
+```
+
+### 3. Activar ambiente virtual
+```
+Linux:
+source cryptool/bin/activate
+Windows:
+cryptool\Scripts\activate
+```
+
+### 4. Instalar dependencias
+```
+python -m pip install -r requirements.txt
+```
+
+### 5. Ejecutar PixelSafe
 ```
 python main.py
 ```
