@@ -1,8 +1,9 @@
 # PixelSafe
 Aplicación de encriptación y recuperación de imágenes y marcas de agua para el curso de *Criptografía*.
+
 Modalidades:
-    - Marca de Agua (WaterMark)
-    - Expansión de Píxeles (Pixel Expansion)
+- Marca de Agua (WaterMark)
+- Expansión de Píxeles (Pixel Expansion)
 
 **Autores**
 - Natalia Monroy Rosas
