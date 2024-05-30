@@ -1,4 +1,4 @@
-# PixelSafe
+# PixelSafe 🔐
 Aplicación de encriptación y recuperación de imágenes y marcas de agua para el curso de *Criptografía*.
 
 Modalidades:
