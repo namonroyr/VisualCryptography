@@ -11,9 +11,10 @@ def resize_image(image_array, size):
     resized_image = image.resize((size[1], size[0]))
     return np.array(resized_image)
 def weak_watermark(original_image, watermark_image, alpha):
+
+    alpha = float(alpha)
     # Presents the entropy of the image
     image_entropy = shannon_entropy(original_image)
-    print(f'Image entropy: {image_entropy}')
     image_size = original_image.shape
     # Change watermark size
     watermark_resized = resize_image(watermark_image, image_size)
@@ -25,12 +26,10 @@ def weak_watermark(original_image, watermark_image, alpha):
     # Similarity indices between images
     # Mean Squared Error (MSE)
     mse_value = np.mean((original_image - marked_image) ** 2)
-
-
     # Peak Signal-to-Noise Ratio (PSNR)
     if mse_value == 0:
         psnr_value = float('inf')
     else:
         psnr_value = 20 * np.log10(255 / np.sqrt(mse_value))
 
-    return marked_image_entropy, mse_value, psnr_value, marked_image
+    return round(image_entropy, 2), round(marked_image_entropy, 2), round(mse_value, 2), round(psnr_value, 2), marked_image
