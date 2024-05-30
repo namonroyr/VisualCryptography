@@ -2,9 +2,9 @@ import numpy as np
 from PIL import Image
 
 def pixel_combination_selection(encryp_type=None):
-    if encryp_type == "vertical":
+    if encryp_type == "2-pixeles-vertical":
         pixel_options = [[0, 1], [1, 0]]
-    elif encryp_type == "horizontal":
+    elif encryp_type == "2-pixeles-horizontal":
         pixel_options = [[0, 1], [1, 0]]
     else:
         pixel_options = [[0, 0, 1, 1], [1, 1, 0, 0], [1, 0, 0, 1], [0, 1, 1, 0], [1, 0, 1, 0], [0, 1, 0, 1]]
@@ -22,7 +22,7 @@ def encrypt(input_image, encryp_type):
     (row, column) = input_matrix.shape
     # se crean los arreglos para almacenar las imágenes a compartir (share 1 & share 2)
 
-    if encryp_type == "vertical":
+    if encryp_type == "2-pixeles-vertical":
 
         img_share_1 = np.empty((row, 2 * column)).astype('uint8')
         img_share_2 = np.empty((row, 2 * column)).astype('uint8')
@@ -40,7 +40,7 @@ def encrypt(input_image, encryp_type):
                     img_share_2[i][2 * j] = 1 - img_share_2[i][2 * j]
                     img_share_2[i][2 * j+1] = 1 - img_share_2[i][2 * j+1]
 
-    elif encryp_type == "horizontal":
+    elif encryp_type == "2-pixeles-horizontal":
 
         img_share_1 = np.empty((2 * row, column)).astype('uint8')
         img_share_2 = np.empty((2 * row, column)).astype('uint8')
@@ -57,6 +57,8 @@ def encrypt(input_image, encryp_type):
                 if input_matrix[i][j] == 0:
                     img_share_2[2 * i][j] = 1 - img_share_2[2 * i][j]
                     img_share_2[2 * i + 1][j] = 1 - img_share_2[2 * i + 1][j]
+        print("Pixel Exp done")
+
 
     else:
         img_share_1 = np.empty((2 * row, 2 * column)).astype('uint8')
@@ -82,15 +84,14 @@ def encrypt(input_image, encryp_type):
     return img_share_1, img_share_2, input_matrix
 
 
-def decrypt(img_share_1, img_share_2):
+def decrypt(img_share_1, img_share_2, encryp_type):
     '''
     Black -> 0
     White -> 1
     '''
     overlap_matrix = img_share_1 & img_share_2
     (row, column) = img_share_1.shape
-
-    if encryp_type == "vertical":
+    if encryp_type == "2-pixeles-vertical":
         row = int(row)
         column = int(column / 2)
         decription_matrix = np.ones((row, column))
@@ -101,7 +102,7 @@ def decrypt(img_share_1, img_share_2):
                 if cnt == 0:
                     decription_matrix[i][j] = 0
 
-    elif encryp_type == "horizontal":
+    elif encryp_type == "2-pixeles-horizontal":
         row = int(row / 2)
         column = int(column)
         decription_matrix = np.ones((row, column))
@@ -141,7 +142,7 @@ if __name__ == "__main__":
     image2.save(f"output_images/{input_image_name}_{encryp_type}_img_share_2.png")
     print("img_share_2 image size (in pixels) : ", image2.size)
 
-    overlap_matrix, decription_matrix = decrypt(img_share_1, img_share_2)
+    overlap_matrix, decription_matrix = decrypt(img_share_1, img_share_2, encryp_type)
     decripted_image = Image.fromarray(decription_matrix.astype(np.uint8) * 255)
     overlap_image = Image.fromarray(overlap_matrix.astype(np.uint8) * 255)
 
