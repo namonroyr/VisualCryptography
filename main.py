@@ -1,23 +1,10 @@
-import sys
-import os
-import math
-import cv2
 import numpy as np
-import string
-import string
-import itertools
-import random
 from PIL import Image
 from PyQt5.QtCore import Qt
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QWidget, QGridLayout, QLabel, QDialog, QTableWidget, QMenu,
-                             QTableWidgetItem, QAbstractItemView, QLineEdit, QTabWidget,
-                             QActionGroup, QAction, QMessageBox, QFrame, QStyle, QGridLayout,
-                             QVBoxLayout, QHBoxLayout, QLabel, QToolButton, QGroupBox, QStackedLayout,
-                             QDateEdit, QComboBox, QPushButton, QFileDialog, QLineEdit, QLineEdit,
-                             QTextEdit, QSpinBox, QSizePolicy)
-from PyQt5.QtGui import (QFont, QIcon, QPalette, QBrush, QColor, QPixmap, QRegion, QClipboard,
-                         QRegExpValidator, QImage, QCursor)
+from PyQt5.QtWidgets import (QApplication, QWidget, QDialog, QMessageBox, QGridLayout,
+                             QVBoxLayout, QHBoxLayout, QLabel, QComboBox, QPushButton, QFileDialog, QLineEdit)
+from PyQt5.QtGui import (QFont, QIcon, QPalette, QBrush, QColor, QPixmap, QCursor)
 
 
 from pixel_expansion.pixel_expansion import encrypt as pe_encrypt
@@ -28,16 +15,6 @@ from Watermark.unmark_weak import unmark_weak as weak_watermark_decrypt
 from Watermark.recover_wavelet_watermark import recover_wavelet_watermark as wavelet_watermark_decrypt
 import matplotlib.pyplot as plt
 
-
-# Modes of padding
-PAD_NORMAL = 1
-PAD_PKCS5 = 2
-
-
-def resource_path(relative_path):
-    """ Get absolute path to resource, works for dev and for PyInstaller """
-    base_path = getattr(sys, 'MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-    return os.path.join(base_path, relative_path)
 
 class PhotoLabel(QLabel):
     def __init__(self, *args, **kwargs):
